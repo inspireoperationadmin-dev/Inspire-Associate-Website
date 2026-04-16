@@ -1,0 +1,41 @@
+{
+  "name": "inspire-website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config vite.config.ts --host 0.0.0.0 --port 5173",
+    "build": "vite build --config vite.config.ts",
+    "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@radix-ui/react-slot": "^1.2.0",
+    "@radix-ui/react-toast": "^1.2.7",
+    "@radix-ui/react-tooltip": "^1.2.0",
+    "@replit/vite-plugin-cartographer": "^0.5.1",
+    "@replit/vite-plugin-dev-banner": "^0.1.2",
+    "@replit/vite-plugin-runtime-error-modal": "^0.0.6",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^25.5.2",
+    "@types/nodemailer": "^8.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^0.541.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.4",
+    "wouter": "^3.3.5"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "nodemailer": "^8.0.5"
+  }
+}

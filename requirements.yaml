@@ -1,0 +1,12 @@
+packages:
+  "framer-motion": "For buttery smooth scroll-triggered entry animations and floating UI effects"
+  "lucide-react": "For crisp, beautiful interface icons"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility to resolve Tailwind class conflicts"
+
+images: []
+
+notes:
+  - "This is a static marketing landing page; no backend API needed."
+  - "Custom fonts (General Sans and Geist) are loaded via external stylesheets in index.css."
+  - "All animations are implemented via raw HTML5 Canvas or Framer Motion."
