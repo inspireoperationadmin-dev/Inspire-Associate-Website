@@ -108,7 +108,7 @@ export default function ContactSection() {
 
           <div className="flex flex-col gap-5">
             {[
-              { icon: "✉", label: "Email", value: "inspireoperation.admin@gmail.com" },
+              { icon: "✉", label: "Email", value: "hr@inspire-associate.com" },
               { icon: "📍", label: "Location", value: "Kopay, Jaffna, Sri Lanka" },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-4 group">
