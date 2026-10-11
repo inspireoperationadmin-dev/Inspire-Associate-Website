@@ -15,7 +15,7 @@ const iconMap = {
 
 export default function ProjectsSection() {
   return (
-    <section id="docs" className="py-24 relative overflow-hidden bg-noise bg-[#020617]">
+    <section id="projects" className="py-24 relative overflow-hidden bg-noise bg-[#020617]">
       <div className="absolute top-0 left-1/2 w-full max-w-150 h-75 bg-blue-800/10 rounded-full blur-[80px] md:blur-[120px] -translate-x-1/2 pointer-events-none will-change-[filter]" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 relative z-10">

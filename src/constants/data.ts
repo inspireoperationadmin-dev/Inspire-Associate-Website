@@ -77,7 +77,7 @@ export const servicesData = [
     category: "Operations", 
     icon: Calculator, 
     relatedIds: [17], 
-    status: "active" as const, 
+    status: "in-progress" as const, 
     energy: 70 
   },
   { 
@@ -88,7 +88,7 @@ export const servicesData = [
     category: "Operations", 
     icon: Database, 
     relatedIds: [16, 18], 
-    status: "active" as const, 
+    status: "in-progress" as const, 
     energy: 65 
   },
   { 
@@ -99,7 +99,7 @@ export const servicesData = [
     category: "Operations", 
     icon: ShoppingCart, 
     relatedIds: [19], 
-    status: "active" as const, 
+    status: "in-progress" as const, 
     energy: 72 
   },
   { 
@@ -110,7 +110,7 @@ export const servicesData = [
     category: "Marketing", 
     icon: TrendingUp, 
     relatedIds: [18, 13], 
-    status: "active" as const, 
+    status: "in-progress" as const, 
     energy: 78 
   },
 
@@ -133,7 +133,7 @@ export const servicesData = [
     category: "Premium",
     icon: Layout,
     relatedIds: [16, 17, 18],
-    status: "active" as const, 
+    status: "in-progress" as const, 
     energy: 95 
   },
 ];

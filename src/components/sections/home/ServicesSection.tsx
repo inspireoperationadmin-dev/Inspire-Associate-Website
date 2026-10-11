@@ -10,7 +10,7 @@ export default function ServicesSection() {
   const mobileServices = showAllServices ? servicesData : servicesData.slice(0, 8);
 
   return (
-    <section id="platforms" className="py-20 md:py-[5%] relative overflow-hidden bg-[#020617]">
+    <section id="services" className="py-20 md:py-[5%] relative overflow-hidden bg-[#020617]">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           whileInView={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}

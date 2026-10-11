@@ -48,7 +48,7 @@ export function Footer() {
           {/* Brand Section */}
           <div className="flex flex-col items-start max-w-xs">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
+              <img src="/logo.png" alt="Inspire Associate logo" className="h-8 w-8 object-contain" />
               <span className="font-bold tracking-tighter text-white text-xl">
                 INSPIRE <span className="text-cyan-400">ASSOCIATE</span>
               </span>
@@ -67,6 +67,7 @@ export function Footer() {
                     href={social.href} 
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.label}
                     className="p-2 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-cyan-400 hover:border-cyan-500/50 transition-all"
                   >
                     <Icon size={18} />
@@ -84,7 +85,7 @@ export function Footer() {
                 <ul className="space-y-3">
                   {group.items.map((item) => (
                     <li key={item.label}>
-                      <a href={item.href} className="text-white/40 hover:text-cyan-400 text-sm transition-colors">
+                      <a href={item.href} className="text-white/60 hover:text-cyan-400 text-sm transition-colors">
                         {item.label}
                       </a>
                     </li>
@@ -97,7 +98,7 @@ export function Footer() {
         
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 text-center md:text-left">
-          <p className="text-white/30 text-xs tracking-wide">
+          <p className="text-white/50 text-xs tracking-wide">
             © {new Date().getFullYear()} INSPIRE ASSOCIATE. ALL RIGHTS RESERVED.
           </p>
         </div>

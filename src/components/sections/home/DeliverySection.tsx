@@ -27,7 +27,7 @@ export default function DeliverySection() {
             From discovery to deployment, we work as an extension of your team. Agile processes, transparent communication, and on-time delivery — every sprint, every release.
           </motion.p>
           <motion.div variants={fadeInUp}>
-            <a href="#docs" className="text-cyan-400 font-semibold flex items-center gap-2 hover:text-blue-400 transition-colors group">
+            <a href="#projects" className="text-cyan-400 font-semibold flex items-center gap-2 hover:text-blue-400 transition-colors group">
               View Completed Projects
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>

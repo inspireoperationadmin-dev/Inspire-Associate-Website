@@ -15,10 +15,10 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Services", href: "#platforms" },
-    { name: "Projects", href: "#docs" },
+    { name: "Services", href: "#services" },
+    { name: "Projects", href: "#projects" },
     { name: "About", href: "#about" },
-    { name: "Why Us", href: "#community" },
+    { name: "Why Us", href: "#why-us" },
   ];
 
   return (
@@ -44,7 +44,7 @@ export function Navbar() {
         {/* 1. Logo Section (Left) */}
         <Link href="/" className="flex items-center gap-[0.8vw] w-fit group">
           <div className="relative w-[3.2rem] h-[3.2rem] transition-transform duration-500 group-hover:rotate-[5deg]">
-            <img src="/logo.png" alt="Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]" />
+            <img src="/logo.png" alt="Inspire Associate logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]" />
           </div>
           <span className="hidden lg:block font-heading font-bold text-[1.1rem] tracking-tighter text-white/90">
             INSPIRE ASSOCIATE
@@ -90,6 +90,8 @@ export function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             className="md:hidden text-white/80 transition-transform active:scale-90"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size="2rem" /> : <Menu size="2rem" />}
@@ -109,6 +111,7 @@ export function Navbar() {
     >
       {/* Close Button */}
       <button 
+        aria-label="Close menu"
         onClick={() => setMobileMenuOpen(false)} 
         className="absolute top-7.5 right-7.5 text-white/70 hover:text-white p-2"
       >

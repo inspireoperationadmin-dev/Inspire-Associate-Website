@@ -135,8 +135,9 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-2">
-                  <label className="text-white/60 text-xs uppercase">First Name</label>
+                  <label htmlFor="contact-firstName" className="text-white/70 text-xs uppercase">First Name</label>
                   <input
+                    id="contact-firstName"
                     name="firstName"
                     type="text"
                     required
@@ -146,8 +147,9 @@ export default function ContactSection() {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-white/60 text-xs uppercase">Last Name</label>
+                  <label htmlFor="contact-lastName" className="text-white/70 text-xs uppercase">Last Name</label>
                   <input
+                    id="contact-lastName"
                     name="lastName"
                     type="text"
                     value={formData.lastName}
@@ -157,10 +159,12 @@ export default function ContactSection() {
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-white/60 text-xs uppercase">Email</label>
+                <label htmlFor="contact-email" className="text-white/70 text-xs uppercase">Email</label>
                 <input
-                  name="email"
+                  id="contact-email"
+                    name="email"
                   type="email"
+                  autoComplete="email"
                   required
                   value={formData.email}
                   onChange={handleChange}
@@ -168,9 +172,10 @@ export default function ContactSection() {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-white/60 text-xs uppercase">Message</label>
+                <label htmlFor="contact-message" className="text-white/70 text-xs uppercase">Message</label>
                 <textarea
-                  name="message"
+                  id="contact-message"
+                    name="message"
                   rows={4}
                   required
                   value={formData.message}

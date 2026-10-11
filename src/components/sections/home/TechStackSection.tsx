@@ -70,7 +70,7 @@ export default function TechStackSection() {
 
       <div className="w-full h-px bg-linear-to-r from-transparent via-cyan-500/30 to-transparent" />
 
-      <section id="community" className="py-24 relative overflow-hidden bg-noise bg-[#020617]">
+      <section id="why-us" className="py-24 relative overflow-hidden bg-noise bg-[#020617]">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
