@@ -1,7 +1,5 @@
 import { Database, Shield, Workflow, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionHeader } from "@/components/ui/section-header";
 import { TECH, TechLogo } from "@/components/ui/tech-logo";
 import { techGroups } from "@/constants/tech";
 
@@ -27,32 +25,26 @@ export default function TechStackSection() {
   return (
     <>
       <section id="technology" className="section-y bg-background">
-        <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+        <div className="container-x grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+          <Reveal className="lg:sticky lg:top-28 lg:self-start">
             <p className="mb-3 flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-brand">
               <span className="h-px w-8 bg-brand/60" aria-hidden="true" />
               Technology
             </p>
-            <h2 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
-              A modern tech stack, zero compromise
+            <h2 className="text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-[2.6rem]">
+              Modern tools, zero compromise
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              We use industry-leading frameworks and best practices to build products that are fast,
-              scalable, and maintainable. Clean code, automated tests, and CI/CD pipelines from day one.
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              We use proven frameworks and best practices to build products that are fast, scalable, and
+              maintainable, plus the design and social tools we use to run your brand and content.
             </p>
-            <Button asChild size="lg" variant="outline" className="mt-8 w-full sm:w-auto">
-              <a href="#contact">Start a project</a>
-            </Button>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="space-y-3 rounded-xl border border-border bg-section p-4 sm:p-6">
+          <div className="border-b border-border">
             {techGroups.map((group, gi) => (
-              <Reveal key={group.label} delay={gi * 0.04}>
-                <div className="flex flex-col gap-2 rounded-lg border border-border bg-card p-4 sm:flex-row sm:items-start sm:gap-4">
-                  <p className="w-24 shrink-0 pt-1.5 text-xs font-semibold uppercase tracking-wider text-brand">
-                    {group.label}
-                  </p>
+              <Reveal key={group.label} delay={Math.min(gi, 4) * 0.04}>
+                <div className="grid gap-3 border-t border-border py-5 sm:grid-cols-[6.5rem_1fr] sm:gap-5">
+                  <p className="pt-2 text-xs font-semibold uppercase tracking-wider text-brand">{group.label}</p>
                   <ul className="flex flex-wrap gap-2">
                     {group.items.map((item) => {
                       const isTech = typeof item === "string";
@@ -60,12 +52,12 @@ export default function TechStackSection() {
                       return (
                         <li
                           key={name}
-                          className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-1.5 text-sm text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-sm"
+                          className="group inline-flex items-center gap-2.5 rounded-lg border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
                         >
                           {isTech ? (
-                            <TechLogo tech={TECH[item]} size={18} />
+                            <TechLogo tech={TECH[item]} size={18} className="text-foreground/70" />
                           ) : (
-                            <Workflow size={18} className="text-brand" aria-hidden="true" />
+                            <Workflow size={18} className="text-foreground/70" aria-hidden="true" />
                           )}
                           {name}
                         </li>
@@ -76,28 +68,34 @@ export default function TechStackSection() {
               </Reveal>
             ))}
           </div>
-          </Reveal>
         </div>
       </section>
 
       <section id="why-us" className="section-y bg-section">
         <div className="container-x">
-          <SectionHeader
-            eyebrow="Why choose us"
-            title="Technical expertise with a client-first mindset"
-            description="We combine engineering discipline with clear communication to deliver solutions that genuinely move your business forward."
-          />
-          <ul className="grid gap-4 md:grid-cols-3 md:gap-6">
+          <Reveal className="mb-12 max-w-2xl md:mb-16">
+            <p className="mb-3 flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-brand">
+              <span className="h-px w-8 bg-brand/60" aria-hidden="true" />
+              Why choose us
+            </p>
+            <h2 className="text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-[2.6rem]">
+              Technical expertise with a client-first mindset
+            </h2>
+          </Reveal>
+          <ul className="grid gap-10 md:grid-cols-3 md:gap-8">
             {reasons.map((item, i) => (
-              <li key={item.title} className="flex">
-                <Reveal delay={i * 0.05} className="flex w-full">
-                  <article className="group w-full rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-brand transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
-                      <item.icon size={22} aria-hidden="true" />
+              <li key={item.title}>
+                <Reveal delay={i * 0.08}>
+                  <div className="border-t-2 border-primary pt-6">
+                    <p className="text-5xl font-extrabold tracking-tight text-foreground/10">
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <div className="mt-4 flex items-center gap-3">
+                      <item.icon size={22} className="text-brand" aria-hidden="true" />
+                      <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
                     </div>
-                    <h3 className="text-lg font-semibold text-card-foreground">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
-                  </article>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">{item.desc}</p>
+                  </div>
                 </Reveal>
               </li>
             ))}

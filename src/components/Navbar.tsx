@@ -6,10 +6,11 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
+  { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },
+  { name: "Process", href: "#process" },
   { name: "Technology", href: "#technology" },
-  { name: "Why Us", href: "#why-us" },
 ];
 
 export function Navbar() {
@@ -52,14 +53,14 @@ export function Navbar() {
           <img
             src="/logo.png"
             alt="Inspire Associates logo"
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-lg bg-logo-tile p-1 object-contain"
+            width={44}
+            height={44}
+            className="h-11 w-11 rounded-lg bg-logo-tile p-1 object-contain"
           />
           <span className="text-base font-semibold tracking-tight text-foreground">Inspire Associates</span>
         </a>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => {
             const isActive = active === link.href.slice(1);
             return (
@@ -88,12 +89,12 @@ export function Navbar() {
 
         <div className="flex items-center gap-1">
           <ThemeToggle />
-          <Button asChild className="hidden md:inline-flex">
+          <Button asChild className="hidden lg:inline-flex">
             <a href="#contact">Get in touch</a>
           </Button>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-foreground hover:bg-accent md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-foreground hover:bg-accent lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -114,7 +115,7 @@ export function Navbar() {
       )}
 
       {open && (
-        <div id="mobile-menu" className="border-t border-border bg-background shadow-lg md:hidden">
+        <div id="mobile-menu" className="border-t border-border bg-background shadow-lg lg:hidden">
           <ul className="container-x flex flex-col py-3">
             {navLinks.map((link) => (
               <li key={link.name}>

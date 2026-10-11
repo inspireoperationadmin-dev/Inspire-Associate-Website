@@ -2,22 +2,23 @@
 
 import { FacebookIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 
-// 1. Data Management: தேவையற்ற லிங்குகளைக் குறைத்து அத்தியாவசியமானவற்றை மட்டும் வைத்துள்ளேன்.
 const FOOTER_LINKS = [
   {
     title: "Services",
     items: [
-      { label: "Web Development", href: "#services" },
-      { label: "Mobile Apps", href: "#services" },
-      { label: "UI/UX Design", href: "#services" },
+      { label: "Web & Mobile Apps", href: "#services" },
+      { label: "UI/UX & Branding", href: "#services" },
+      { label: "Social Media & Content", href: "#services" },
+      { label: "Business Support", href: "#services" },
     ],
   },
   {
     title: "Company",
     items: [
-      { label: "Our Work", href: "#projects" },
+      { label: "About", href: "#about" },
+      { label: "Projects", href: "#projects" },
+      { label: "Process", href: "#process" },
       { label: "Technology", href: "#technology" },
-      { label: "Why Us", href: "#why-us" },
       { label: "Contact", href: "#contact" },
     ],
   },
@@ -43,51 +44,54 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-section">
-      <div className="container-x py-12 md:py-16">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
-          <div className="max-w-sm">
-            <a href="#top" className="flex items-center gap-3">
-              <img
-                src="/logo.png"
-                alt="Inspire Associates logo"
-                width={40}
-                height={40}
-                className="h-10 w-10 rounded-lg bg-logo-tile p-1 object-contain"
-              />
-              <span className="text-base font-semibold text-foreground">Inspire Associates</span>
-            </a>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Growth | Innovation | Trust. Software development, design, and business support from Jaffna, Sri Lanka.
-            </p>
-            <div className="mt-5 flex items-center gap-2">
-              {SOCIAL_LINKS.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors hover:text-brand"
-                  >
-                    <Icon size={18} />
-                  </a>
-                );
-              })}
+    <footer className="border-t border-white/10 bg-navy text-white">
+      <div className="container-x py-10 md:py-14">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-[1.6fr_1fr_1fr]">
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex items-center justify-between gap-4 md:block">
+              <a href="#top" className="flex items-center gap-3">
+                <img
+                  src="/logo.png"
+                  alt="Inspire Associates logo"
+                  width={44}
+                  height={44}
+                  className="h-11 w-11 rounded-lg bg-white p-1 object-contain"
+                />
+                <span className="text-base font-semibold">Inspire Associates</span>
+              </a>
+              <div className="flex items-center gap-2 md:mt-5">
+                {SOCIAL_LINKS.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 bg-white/5 text-white/70 transition-colors hover:border-sky-400/50 hover:text-sky-400"
+                    >
+                      <Icon size={17} />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/65">
+              Software, design, and business support from Jaffna, Sri Lanka.
+              <span className="hidden md:inline"> Growth | Innovation | Trust.</span>
+            </p>
           </div>
 
           {FOOTER_LINKS.map((group) => (
             <div key={group.title}>
-              <p className="mb-4 text-sm font-semibold text-foreground">{group.title}</p>
-              <ul className="space-y-1">
+              <p className="mb-2 text-sm font-semibold md:mb-3">{group.title}</p>
+              <ul>
                 {group.items.map((item) => (
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      className="inline-block py-1.5 text-sm text-muted-foreground transition-colors hover:text-brand"
+                      className="inline-block py-1 text-sm text-white/65 transition-colors hover:text-sky-400"
                     >
                       {item.label}
                     </a>
@@ -98,8 +102,8 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 border-t border-border pt-6">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-8 border-t border-white/10 pt-5 md:mt-10">
+          <p className="text-xs text-white/55 sm:text-sm">
             © {new Date().getFullYear()} Inspire Associates. All rights reserved.
           </p>
         </div>

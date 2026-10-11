@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/sections/home/HeroSection";
+import AboutSection from "@/components/sections/home/AboutSection";
 import ServicesSection from "@/components/sections/home/ServicesSection";
 import DeliverySection from "@/components/sections/home/DeliverySection";
 import ProjectsSection from "@/components/sections/home/ProjectsSection";
@@ -21,9 +22,10 @@ export default function Home() {
       <main id="main" className="overflow-x-hidden">
         <HeroSection />
         <TechMarquee />
+        <AboutSection />
         <ServicesSection />
-        <DeliverySection />
         <ProjectsSection />
+        <DeliverySection />
         <TechStackSection />
         <ContactSection />
       </main>

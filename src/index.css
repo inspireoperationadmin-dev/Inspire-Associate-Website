@@ -11,6 +11,7 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-section: hsl(var(--section));
+  --color-navy: hsl(var(--navy));
 
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
@@ -35,8 +36,8 @@
   --color-ring: hsl(var(--ring));
   --color-logo-tile: var(--logo-tile);
 
-  --font-heading: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -50,16 +51,17 @@
   /* Light theme: white space, slate text, one brand blue (from the logo) */
   --background: 0 0% 100%;
   --foreground: 222 47% 11%;
-  --section: 210 40% 98%;
+  --section: 214 45% 97%;
 
   --card: 0 0% 100%;
   --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
 
-  --primary: 215 84% 40%;
+  --primary: 219 86% 44%;
   --primary-foreground: 0 0% 100%;
-  --brand: 215 84% 38%;
+  --brand: 219 86% 42%;
+  --navy: 222 62% 13%;
 
   --secondary: 210 40% 96%;
   --secondary-foreground: 222 47% 11%;
@@ -91,9 +93,10 @@
     --popover: 222 36% 12%;
     --popover-foreground: 210 40% 96%;
 
-    --primary: 215 84% 45%;
+    --primary: 219 88% 52%;
     --primary-foreground: 0 0% 100%;
     --brand: 205 90% 68%;
+    --navy: 222 55% 14%;
 
     --secondary: 222 30% 16%;
     --secondary-foreground: 210 40% 96%;
@@ -124,9 +127,10 @@
   --popover: 222 36% 12%;
   --popover-foreground: 210 40% 96%;
 
-  --primary: 215 84% 45%;
+  --primary: 219 88% 52%;
   --primary-foreground: 0 0% 100%;
   --brand: 205 90% 68%;
+  --navy: 222 55% 14%;
 
   --secondary: 222 30% 16%;
   --secondary-foreground: 210 40% 96%;
@@ -194,7 +198,8 @@
     @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight;
+    @apply font-heading;
+    letter-spacing: -0.015em;
   }
   :focus-visible {
     outline: 2px solid hsl(var(--ring));

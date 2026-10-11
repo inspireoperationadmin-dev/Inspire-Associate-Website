@@ -3,7 +3,6 @@ import { Mail, MapPin } from "lucide-react";
 import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionHeader } from "@/components/ui/section-header";
 import { toast } from "@/hooks/use-toast";
 
 // EmailJS (Client side library)
@@ -83,7 +82,7 @@ export default function ContactSection() {
 
   const field =
     "w-full rounded-lg border border-input bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/30";
-  const label = "mb-1.5 block text-sm font-medium text-foreground";
+  const label = "mb-1.5 block text-sm font-medium text-card-foreground";
 
   const details = [
     { icon: Mail, label: "Email", value: "hr@inspire-associate.com", href: "mailto:hr@inspire-associate.com" },
@@ -93,45 +92,54 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="section-y bg-background">
-      <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <SectionHeader
-            align="left"
-            eyebrow="Contact"
-            title="Let's build something great together"
-            description="Have a project in mind? Tell us about it and we will get back to you."
-          />
-          <ul className="space-y-5">
+    <section id="contact" className="section-y relative overflow-hidden bg-navy text-white">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_70%)]"
+      />
+      <div className="container-x relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <Reveal>
+          <p className="mb-3 flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-sky-400">
+            <span className="h-px w-8 bg-sky-400/60" aria-hidden="true" />
+            Contact
+          </p>
+          <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-[2.6rem]">
+            Let&apos;s build something great together
+          </h2>
+          <p className="mt-5 max-w-md text-base leading-relaxed text-white/70 sm:text-lg">
+            Have a project in mind? Tell us about it and we will get back to you.
+          </p>
+          <ul className="mt-9 space-y-5">
             {details.map((item) => (
               <li key={item.label} className="flex items-center gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-brand">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-sky-400">
                   <item.icon size={20} aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{item.label}</p>
+                  <p className="text-xs font-medium uppercase tracking-wider text-white/50">{item.label}</p>
                   {item.href ? (
                     <a
                       href={item.href}
                       {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="break-words font-medium text-foreground hover:text-brand hover:underline"
+                      className="break-words font-medium text-white hover:text-sky-300 hover:underline"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="font-medium text-foreground">{item.value}</p>
+                    <p className="font-medium text-white">{item.value}</p>
                   )}
                 </div>
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
 
         <Reveal delay={0.1}>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-5 rounded-xl border border-border bg-card p-5 shadow-sm sm:p-8"
+            className="relative flex flex-col gap-5 rounded-2xl bg-card p-6 text-card-foreground shadow-2xl sm:p-9"
           >
+            <h3 className="text-xl font-bold">Send us a message</h3>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="contact-firstName" className={label}>First name</label>
