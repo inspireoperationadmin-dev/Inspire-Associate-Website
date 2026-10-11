@@ -1,7 +1,6 @@
-// src/components/layout/Footer.tsx
+// src/components/Footer.tsx
 
-import { Link } from "wouter";
-import { Facebook, MessageCircle, ArrowUpRight } from "lucide-react";
+import { FacebookIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 
 // 1. Data Management: தேவையற்ற லிங்குகளைக் குறைத்து அத்தியாவசியமானவற்றை மட்டும் வைத்துள்ளேன்.
 const FOOTER_LINKS = [
@@ -17,58 +16,61 @@ const FOOTER_LINKS = [
     title: "Company",
     items: [
       { label: "Our Work", href: "#projects" },
-      { label: "About Us", href: "#about" },
+      { label: "Technology", href: "#technology" },
+      { label: "Why Us", href: "#why-us" },
       { label: "Contact", href: "#contact" },
     ],
   },
 ];
 
 const SOCIAL_LINKS = [
-  { 
-    icon: Facebook, 
-    href: "https://www.facebook.com/share/1GS4oMRvKf/",
-    label: "Facebook" 
+  {
+    icon: LinkedInIcon,
+    href: "https://www.linkedin.com/company/inspire-associates/",
+    label: "LinkedIn",
   },
-  { 
-    icon: MessageCircle, 
-    href: "https://wa.me/94773091764", // உங்கள் WhatsApp லிங்க்
-    label: "WhatsApp" 
+  {
+    icon: FacebookIcon,
+    href: "https://www.facebook.com/share/1GS4oMRvKf/",
+    label: "Facebook",
+  },
+  {
+    icon: WhatsAppIcon,
+    href: "https://wa.me/94773091764",
+    label: "WhatsApp",
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#020617] pt-16 pb-8 border-t border-white/5 overflow-hidden">
-      {/* Cyan gradient line */}
-      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/20 to-transparent" />
-      
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="flex flex-col md:flex-row justify-between gap-12 mb-12">
-          
-          {/* Brand Section */}
-          <div className="flex flex-col items-start max-w-xs">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="Inspire Associate logo" className="h-8 w-8 object-contain" />
-              <span className="font-bold tracking-tighter text-white text-xl">
-                INSPIRE <span className="text-cyan-400">ASSOCIATE</span>
-              </span>
-            </Link>
-            <p className="text-white/50 text-sm leading-relaxed mb-6">
-              Building digital excellence through modern software solutions.
+    <footer className="border-t border-border bg-section">
+      <div className="container-x py-12 md:py-16">
+        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
+          <div className="max-w-sm">
+            <a href="#top" className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Inspire Associates logo"
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-lg bg-logo-tile p-1 object-contain"
+              />
+              <span className="text-base font-semibold text-foreground">Inspire Associates</span>
+            </a>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Growth | Innovation | Trust. Software development, design, and business support from Jaffna, Sri Lanka.
             </p>
-            
-            {/* Minimal Social Icons */}
-            <div className="flex items-center gap-3">
+            <div className="mt-5 flex items-center gap-2">
               {SOCIAL_LINKS.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <a 
+                  <a
                     key={social.label}
-                    href={social.href} 
+                    href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="p-2 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-cyan-400 hover:border-cyan-500/50 transition-all"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors hover:text-brand"
                   >
                     <Icon size={18} />
                   </a>
@@ -76,30 +78,29 @@ export function Footer() {
               })}
             </div>
           </div>
-          
-          {/* Links Section */}
-          <div className="grid grid-cols-2 gap-12">
-            {FOOTER_LINKS.map((group) => (
-              <div key={group.title}>
-                <h4 className="text-white text-xs font-bold uppercase tracking-widest mb-5">{group.title}</h4>
-                <ul className="space-y-3">
-                  {group.items.map((item) => (
-                    <li key={item.label}>
-                      <a href={item.href} className="text-white/60 hover:text-cyan-400 text-sm transition-colors">
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+
+          {FOOTER_LINKS.map((group) => (
+            <div key={group.title}>
+              <p className="mb-4 text-sm font-semibold text-foreground">{group.title}</p>
+              <ul className="space-y-1">
+                {group.items.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className="inline-block py-1.5 text-sm text-muted-foreground transition-colors hover:text-brand"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 text-center md:text-left">
-          <p className="text-white/50 text-xs tracking-wide">
-            © {new Date().getFullYear()} INSPIRE ASSOCIATE. ALL RIGHTS RESERVED.
+
+        <div className="mt-10 border-t border-border pt-6">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Inspire Associates. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,38 +1,32 @@
-import { Navbar } from "@/components/Navbar"; 
+import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/sections/home/HeroSection";
 import ServicesSection from "@/components/sections/home/ServicesSection";
 import DeliverySection from "@/components/sections/home/DeliverySection";
 import ProjectsSection from "@/components/sections/home/ProjectsSection";
 import TechStackSection from "@/components/sections/home/TechStackSection";
-import TestimonialsSection from "@/components/sections/home/TestimonialsSection";
+import { TechMarquee } from "@/components/ui/tech-marquee";
 import ContactSection from "@/components/sections/home/ContactSection";
-
-const Divider = () => (
-  <div className="w-full h-px bg-linear-to-r from-transparent via-cyan-500/30 to-transparent" />
-);
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#020617]">
+    <div id="top" className="min-h-screen bg-background text-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+      >
+        Skip to content
+      </a>
       <Navbar />
-
-      <main className="overflow-x-hidden"> {/* Scroll x-axis issue தடுக்கப்பட்டது */}
+      <main id="main" className="overflow-x-hidden">
         <HeroSection />
-        <Divider />
+        <TechMarquee />
         <ServicesSection />
-        <Divider />
         <DeliverySection />
-        <Divider />
         <ProjectsSection />
-        <Divider />
         <TechStackSection />
-        {/* <Divider />
-        <TestimonialsSection /> */}
-        <Divider />
         <ContactSection />
       </main>
-
       <Footer />
     </div>
   );

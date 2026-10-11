@@ -1,85 +1,124 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Code2, Rocket, ShieldCheck } from "lucide-react";
-import { InfiniteGrid } from "@/components/ui/InfiniteGrid";
-import { LiquidGlassButton } from "@/components/ui/LiquidGlass";
+import { ArrowRight, Check } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
+import { TECH, TechLogo } from "@/components/ui/tech-logo";
+import type { TechId } from "@/constants/tech";
+
+const highlights = ["Web & mobile apps", "UI/UX design", "Cloud & business support"];
+
+// Logos that float around the brand mark (desktop only)
+const floating: { id: TechId; className: string; delay: string }[] = [
+  { id: "react", className: "left-2 top-10", delay: "0s" },
+  { id: "nodejs", className: "right-4 top-6", delay: "1.2s" },
+  { id: "python", className: "-left-2 bottom-24", delay: "2.4s" },
+  { id: "docker", className: "right-0 bottom-28", delay: "0.6s" },
+  { id: "figma", className: "left-12 bottom-4", delay: "1.8s" },
+  { id: "kubernetes", className: "right-14 bottom-2", delay: "3s" },
+];
 
 export default function HeroSection() {
+  const reduce = useReducedMotion();
+
   return (
-    <section className="relative w-full min-h-[90vh] pt-20 flex items-center justify-center overflow-hidden bg-[#020617]">
-      {/* 1. Background Grid */}
-      <div className="absolute inset-0 z-0 opacity-50">
-        <InfiniteGrid />
+    <section className="relative overflow-hidden bg-background pb-16 pt-28 md:pb-24 md:pt-36">
+      {/* Soft background: dotted grid + a slow blue glow */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+        <div className="absolute -top-32 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl animate-blob" />
       </div>
 
-      {/* 2. Floating Glows (Fills empty space beautifully) */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-600/30 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <Reveal>
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-section px-3 py-1 text-xs font-medium text-muted-foreground sm:text-sm">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              Software company · Jaffna, Sri Lanka
+            </p>
+          </Reveal>
 
+          <Reveal delay={0.08}>
+            <h1 className="text-4xl font-semibold leading-[1.1] text-foreground sm:text-5xl lg:text-6xl">
+              Innovative solutions, engineered for{" "}
+              <span className="relative inline-block text-brand">
+                your growth.
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                  className="absolute -bottom-1 left-0 h-2 w-full text-primary/60"
+                >
+                  <motion.path
+                    d="M2 8 C 40 2, 90 2, 130 6 S 180 9, 198 4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    initial={reduce ? false : { pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.9, delay: 0.7, ease: "easeInOut" }}
+                  />
+                </svg>
+              </span>
+            </h1>
+          </Reveal>
 
-      {/* 4. Main Content (Refined Typography) */}
-      <div className="relative z-20 max-w-5xl mx-auto px-6 md:px-8 flex flex-col items-center text-center mt-10">
-        
-        {/* Top Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-md mb-8"
-        >
-          <Rocket size={14} className="text-cyan-400" />
-          <span className="text-xs md:text-sm font-semibold text-cyan-200 tracking-wide uppercase">
-            Empowering Digital Futures
-          </span>
-        </motion.div>
+          <Reveal delay={0.16}>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              We design, build, and scale digital products — from web and mobile apps to cloud
+              infrastructure — so your business can move faster and grow smarter.
+            </p>
+          </Reveal>
 
-        {/* Headline - Adjusted Sizes for Perfect Balance */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.15] tracking-tight mb-6"
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }} // Using Modern Font
-        >
-          Innovative Solutions.<br className="hidden sm:block" />
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-cyan-400 to-blue-500 animate-gradient-x inline-block mt-2">
-            Engineered for
-          </span><br className="hidden sm:block" /> Your Growth.
-        </motion.h1>
+          <Reveal delay={0.24}>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" className="group w-full sm:w-auto">
+                <a href="#contact">
+                  Start a project
+                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                <a href="#services">Our services</a>
+              </Button>
+            </div>
+          </Reveal>
 
-        {/* Sub-headline */}
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base sm:text-lg lg:text-xl text-white/60 max-w-2xl mb-10 leading-relaxed"
-          style={{ fontFamily: "'Inter', sans-serif" }}
-        >
-          We design, build, and scale digital products — from web and mobile apps to cloud infrastructure — so your business can move faster and grow smarter.
-        </motion.p>
+          <Reveal delay={0.32}>
+            <ul className="mt-8 flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:gap-x-6">
+              {highlights.map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <Check size={16} className="text-brand" aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
 
-        {/* Buttons */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col w-full sm:w-auto sm:flex-row gap-4 justify-center"
-        >
-          <LiquidGlassButton
-            className="w-full sm:w-auto px-8 py-4 text-white text-base font-semibold bg-linear-to-r from-blue-600 to-cyan-500 border border-cyan-300/35 shadow-[0_0_18px_rgba(34,211,238,0.28)] hover:shadow-[0_0_26px_rgba(34,211,238,0.4)] transition-all duration-300 rounded-full flex items-center justify-center gap-2"
-            onClick={(e) => { e.preventDefault(); document.getElementById("platforms")?.scrollIntoView({ behavior: "smooth" }); }}
-          >
-            Our Services
-            <ArrowRight size={18} />
-          </LiquidGlassButton>
-          
-          <LiquidGlassButton
-            className="w-full sm:w-auto px-8 py-4 text-white text-base font-semibold bg-white/5 border border-white/8 hover:bg-white/10 transition-all duration-300 rounded-full backdrop-blur-md flex items-center justify-center"
-            onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); } }
-          >
-            Get In Touch
-          </LiquidGlassButton>
-        </motion.div>
+        <Reveal delay={0.15} className="hidden lg:block">
+          <div className="relative mx-auto flex aspect-square max-w-md flex-col items-center justify-center rounded-2xl border border-border bg-section p-10">
+            <div className="animate-float rounded-3xl bg-logo-tile p-8 shadow-sm">
+              <img src="/logo.png" alt="" width={240} height={240} className="h-52 w-52 object-contain" />
+            </div>
+            <p className="mt-6 text-lg font-semibold text-foreground">Inspire Associates</p>
+            <p className="mt-1 text-sm text-muted-foreground">Growth | Innovation | Trust</p>
 
+            {floating.map((f) => (
+              <div
+                key={f.id}
+                aria-hidden="true"
+                style={{ animationDelay: f.delay }}
+                className={`absolute ${f.className} animate-float rounded-xl border border-border bg-card p-3 shadow-sm`}
+              >
+                <TechLogo tech={TECH[f.id]} size={24} />
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

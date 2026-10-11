@@ -1,22 +1,22 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { motion } from "framer-motion";
-import { LiquidGlassButton } from "@/components/ui/LiquidGlass";
-import { GlowCard } from "@/components/ui/spotlight-card";
-import ShaderBackground from "@/components/ui/shader-background";
+import { Mail, MapPin } from "lucide-react";
+import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
+import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
+import { SectionHeader } from "@/components/ui/section-header";
 import { toast } from "@/hooks/use-toast";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 // EmailJS (Client side library)
 import emailjs from "@emailjs/browser";
 
 export default function ContactSection() {
-  const isMobile = useIsMobile();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     message: "",
   });
+  const [honeypot, setHoneypot] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
@@ -28,6 +28,7 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (honeypot) return; // bots fill hidden fields; real visitors never see it
 
     const firstName = formData.firstName.trim();
     const email = formData.email.trim();
@@ -80,119 +81,92 @@ export default function ContactSection() {
     }
   };
 
+  const field =
+    "w-full rounded-lg border border-input bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/30";
+  const label = "mb-1.5 block text-sm font-medium text-foreground";
+
+  const details = [
+    { icon: Mail, label: "Email", value: "hr@inspire-associate.com", href: "mailto:hr@inspire-associate.com" },
+    { icon: WhatsAppIcon, label: "WhatsApp", value: "+94 77 309 1764", href: "https://wa.me/94773091764" },
+    { icon: LinkedInIcon, label: "LinkedIn", value: "Inspire Associates", href: "https://www.linkedin.com/company/inspire-associates/" },
+    { icon: MapPin, label: "Location", value: "Kopay, Jaffna, Sri Lanka" },
+  ];
+
   return (
-    <section id="contact" className="relative min-h-screen overflow-hidden flex items-center justify-center py-24 bg-[#020617]">
-      {!isMobile && <ShaderBackground />}
-      <div className="absolute inset-0 bg-[#020617]/85 md:bg-[#020617]/70 pointer-events-none z-1" />
-
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left Copy Section */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-cyan-300 text-xs font-semibold tracking-widest uppercase mb-6">
-            Contact Us
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-            Let's build something{" "}
-            <span className="bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              extraordinary
-            </span>
-          </h2>
-          <p className="text-white/60 text-lg mb-10">
-            Have a project in mind? We'd love to hear about it.
-          </p>
-
-          <div className="flex flex-col gap-5">
-            {[
-              { icon: "✉", label: "Email", value: "hr@inspire-associate.com" },
-              { icon: "📍", label: "Location", value: "Kopay, Jaffna, Sri Lanka" },
-            ].map((item) => (
-              <div key={item.label} className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center">
-                  {item.icon}
+    <section id="contact" className="section-y bg-background">
+      <div className="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <SectionHeader
+            align="left"
+            eyebrow="Contact"
+            title="Let's build something great together"
+            description="Have a project in mind? Tell us about it and we will get back to you."
+          />
+          <ul className="space-y-5">
+            {details.map((item) => (
+              <li key={item.label} className="flex items-center gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-brand">
+                  <item.icon size={20} aria-hidden="true" />
                 </div>
-                <div>
-                  <p className="text-white/40 text-xs uppercase">{item.label}</p>
-                  <p className="text-white font-medium group-hover:text-cyan-300">{item.value}</p>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{item.label}</p>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className="break-words font-medium text-foreground hover:text-brand hover:underline"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="font-medium text-foreground">{item.value}</p>
+                  )}
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
-        </motion.div>
+          </ul>
+        </div>
 
-        {/* Form Section */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <GlowCard className="p-8 backdrop-blur-md bg-[#0f172a]/80 border border-blue-500/20 shadow-xl rounded-3xl">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-firstName" className="text-white/70 text-xs uppercase">First Name</label>
-                  <input
-                    id="contact-firstName"
-                    name="firstName"
-                    type="text"
-                    required
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    className="bg-[#020617]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan-500/60 outline-none"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-lastName" className="text-white/70 text-xs uppercase">Last Name</label>
-                  <input
-                    id="contact-lastName"
-                    name="lastName"
-                    type="text"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    className="bg-[#020617]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan-500/60 outline-none"
-                  />
-                </div>
+        <Reveal delay={0.1}>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-5 rounded-xl border border-border bg-card p-5 shadow-sm sm:p-8"
+          >
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label htmlFor="contact-firstName" className={label}>First name</label>
+                <input id="contact-firstName" name="firstName" type="text" required autoComplete="given-name"
+                  value={formData.firstName} onChange={handleChange} className={field} />
               </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="contact-email" className="text-white/70 text-xs uppercase">Email</label>
-                <input
-                  id="contact-email"
-                    name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="bg-[#020617]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan-500/60 outline-none"
-                />
+              <div>
+                <label htmlFor="contact-lastName" className={label}>Last name</label>
+                <input id="contact-lastName" name="lastName" type="text" autoComplete="family-name"
+                  value={formData.lastName} onChange={handleChange} className={field} />
               </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="contact-message" className="text-white/70 text-xs uppercase">Message</label>
-                <textarea
-                  id="contact-message"
-                    name="message"
-                  rows={4}
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="bg-[#020617]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan-500/60 outline-none resize-none"
-                />
-              </div>
-              <LiquidGlassButton
-                type="submit"
-                disabled={loading}
-                className="w-full py-4 bg-linear-to-r from-blue-600/70 to-cyan-500/70 text-white font-bold"
-              >
-                {loading ? "Sending..." : "Send Message →"}
-              </LiquidGlassButton>
-            </form>
-          </GlowCard>
-        </motion.div>
+            </div>
+            <div>
+              <label htmlFor="contact-email" className={label}>Email</label>
+              <input id="contact-email" name="email" type="email" required autoComplete="email"
+                value={formData.email} onChange={handleChange} className={field} />
+            </div>
+            <div>
+              <label htmlFor="contact-message" className={label}>Message</label>
+              <textarea id="contact-message" name="message" rows={5} required
+                value={formData.message} onChange={handleChange} className={`${field} resize-y`} />
+            </div>
+
+            {/* Honeypot: hidden from people, visible to bots */}
+            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+              <label htmlFor="contact-website">Website</label>
+              <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off"
+                value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+            </div>
+
+            <Button type="submit" size="lg" disabled={loading} className="w-full">
+              {loading ? "Sending..." : "Send message"}
+            </Button>
+          </form>
+        </Reveal>
       </div>
     </section>
   );
