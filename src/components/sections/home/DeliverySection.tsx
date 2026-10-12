@@ -1,5 +1,4 @@
 import { ArrowRight, Check, PackageCheck } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/reveal";
 
 const steps = [
@@ -30,8 +29,6 @@ const steps = [
 ];
 
 export default function DeliverySection() {
-  const reduce = useReducedMotion();
-
   return (
     <section id="process" className="section-y relative overflow-hidden bg-navy text-white">
       <div
@@ -70,16 +67,12 @@ export default function DeliverySection() {
               <Reveal delay={i * 0.08} className="flex w-full">
                 <article className="group relative flex w-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.07]">
                   <div className="flex items-center justify-between">
-                    <motion.span
+                    <span
                       aria-hidden="true"
                       className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-400/10 text-lg font-bold text-sky-400 ring-1 ring-sky-400/30"
-                      initial={reduce ? false : { scale: 0.7, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      viewport={{ once: true, amount: 0.8 }}
-                      transition={{ type: "spring", stiffness: 240, damping: 18, delay: i * 0.12 }}
                     >
                       {String(i + 1).padStart(2, "0")}
-                    </motion.span>
+                    </span>
                     <span className="text-xs font-medium uppercase tracking-wider text-white/40">
                       Step {i + 1} of {steps.length}
                     </span>

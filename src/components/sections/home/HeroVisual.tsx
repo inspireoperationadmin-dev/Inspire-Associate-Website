@@ -1,13 +1,10 @@
 import { Check } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import { TECH, TechLogo } from "@/components/ui/tech-logo";
 
 const bars = [38, 62, 48, 80, 58, 92, 70];
 
 /** Abstract product illustration: a web app, a phone, and two floating badges. */
 export function HeroVisual() {
-  const reduce = useReducedMotion();
-
   return (
     <div className="relative mx-auto w-full max-w-[38rem] pb-12 pt-10 pr-3" aria-hidden="true">
       <div className="absolute inset-y-4 left-4 right-0 rounded-[2rem] bg-gradient-to-br from-primary/15 via-primary/5 to-transparent" />
@@ -43,13 +40,10 @@ export function HeroVisual() {
             </div>
             <div className="mt-4 flex h-24 items-end gap-2 rounded-lg border border-border bg-section/60 p-3">
               {bars.map((h, i) => (
-                <motion.div
+                <div
                   key={i}
-                  className="flex-1 rounded-t bg-primary"
-                  style={{ height: `${h}%`, opacity: 0.35 + (h / 100) * 0.65 }}
-                  initial={reduce ? false : { scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.7, delay: 0.5 + i * 0.07, ease: "easeOut" }}
+                  className="animate-grow flex-1 origin-bottom rounded-t bg-primary"
+                  style={{ height: `${h}%`, opacity: 0.35 + (h / 100) * 0.65, animationDelay: `${0.5 + i * 0.07}s` }}
                 />
               ))}
             </div>

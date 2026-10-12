@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -16,9 +15,30 @@ const navLinks = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.2 });
+  const barRef = useRef<HTMLDivElement>(null);
+
+  // Reading-progress bar (updates a transform only, no re-renders)
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   // Close the mobile menu with Escape
   useEffect(() => {
@@ -106,13 +126,12 @@ export function Navbar() {
       </nav>
 
       {/* Reading progress */}
-      {!reduce && (
-        <motion.div
-          aria-hidden="true"
-          style={{ scaleX: progress, transformOrigin: "0% 50%" }}
-          className="absolute inset-x-0 bottom-0 h-0.5 bg-primary"
-        />
-      )}
+      <div
+        ref={barRef}
+        aria-hidden="true"
+        style={{ transform: "scaleX(0)" }}
+        className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-primary motion-reduce:hidden"
+      />
 
       {open && (
         <div id="mobile-menu" className="border-t border-border bg-background shadow-lg lg:hidden">

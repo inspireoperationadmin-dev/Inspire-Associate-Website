@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
-import { useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { HeroVisual } from "@/components/sections/home/HeroVisual";
@@ -10,14 +9,14 @@ const highlights = ["Web & mobile apps", "Brand, social & content", "Cloud & bus
 const words = ["web apps", "mobile apps", "brands", "online stores", "campaigns"];
 
 /** All words share one grid cell, so the box is as wide as the longest word and nothing jumps. */
-function RotatingWord({ animate }: { animate: boolean }) {
+function RotatingWord() {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    if (!animate) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => setActive((i) => (i + 1) % words.length), 2600);
     return () => clearInterval(id);
-  }, [animate]);
+  }, []);
 
   return (
     <span className="inline-grid text-brand" aria-hidden="true">
@@ -37,8 +36,6 @@ function RotatingWord({ animate }: { animate: boolean }) {
 }
 
 export default function HeroSection() {
-  const reduce = useReducedMotion();
-
   return (
     <section className="relative overflow-hidden bg-background pb-14 pt-28 md:pb-20 md:pt-36">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -48,7 +45,7 @@ export default function HeroSection() {
 
       <div className="container-x relative grid items-center gap-14 lg:grid-cols-[1fr_1fr] lg:gap-8">
         <div>
-          <Reveal>
+          <Reveal hero>
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm sm:text-sm">
               <span className="relative flex h-2 w-2" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
@@ -58,7 +55,7 @@ export default function HeroSection() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal hero delay={0.08}>
             <h1 className="text-[2.6rem] font-extrabold leading-[1.08] tracking-[-0.025em] text-foreground sm:text-6xl lg:text-[3.6rem]">
               <span className="sr-only">
                 We build web apps, mobile apps, brands, online stores and campaigns for growing businesses.
@@ -66,21 +63,21 @@ export default function HeroSection() {
               <span aria-hidden="true">
                 We build
                 <br />
-                <RotatingWord animate={!reduce} />
+                <RotatingWord />
                 <br />
                 for growing businesses.
               </span>
             </h1>
           </Reveal>
 
-          <Reveal delay={0.16}>
+          <Reveal hero delay={0.16}>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               From first sketch to live product, our Jaffna team designs and builds web and mobile apps,
               brands and content, and the digital operations that keep your business running.
             </p>
           </Reveal>
 
-          <Reveal delay={0.24}>
+          <Reveal hero delay={0.24}>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="group w-full sm:w-auto">
                 <a href="#contact">
@@ -94,7 +91,7 @@ export default function HeroSection() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.32}>
+          <Reveal hero delay={0.32}>
             <ul className="mt-9 flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:gap-x-7">
               {highlights.map((item) => (
                 <li key={item} className="flex items-center gap-2">
@@ -106,7 +103,7 @@ export default function HeroSection() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.15}>
+        <Reveal hero delay={0.15}>
           <HeroVisual />
         </Reveal>
       </div>
