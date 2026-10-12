@@ -95,7 +95,7 @@ export default function ContactSection() {
     <section id="contact" className="section-y relative overflow-hidden bg-navy text-white">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_70%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] bg-size-[28px_28px] mask-[radial-gradient(ellipse_at_top_left,black,transparent_70%)]"
       />
       <div className="container-x relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <Reveal>
@@ -121,7 +121,7 @@ export default function ContactSection() {
                     <a
                       href={item.href}
                       {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="break-words font-medium text-white hover:text-sky-300 hover:underline"
+                      className="wrap-break-word font-medium text-white hover:text-sky-300 hover:underline"
                     >
                       {item.value}
                     </a>
@@ -164,7 +164,7 @@ export default function ContactSection() {
             </div>
 
             {/* Honeypot: hidden from people, visible to bots */}
-            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+            <div className="absolute -left-2499.75 h-0 w-0 overflow-hidden" aria-hidden="true">
               <label htmlFor="contact-website">Website</label>
               <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off"
                 value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />

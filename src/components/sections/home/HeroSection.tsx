@@ -39,8 +39,8 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-background pb-14 pt-28 md:pb-20 md:pt-36">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_65%)]" />
-        <div className="absolute -left-24 -top-24 h-[24rem] w-[24rem] rounded-full bg-primary/10 blur-3xl animate-blob" />
+        <div className="absolute inset-0 bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_at_top_left,black,transparent_65%)]" />
+        <div className="absolute -left-24 -top-24 h-96 w-[24rem] rounded-full bg-primary/10 blur-3xl animate-blob" />
       </div>
 
       <div className="container-x relative grid items-center gap-14 lg:grid-cols-[1fr_1fr] lg:gap-8">

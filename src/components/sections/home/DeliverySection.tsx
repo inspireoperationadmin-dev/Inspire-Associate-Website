@@ -33,7 +33,7 @@ export default function DeliverySection() {
     <section id="process" className="section-y relative overflow-hidden bg-navy text-white">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] bg-size-[28px_28px] mask-[radial-gradient(ellipse_at_top_right,black,transparent_70%)]"
       />
       <div className="container-x relative">
         <Reveal className="mb-12 grid gap-4 md:mb-14 md:grid-cols-2 md:items-end md:gap-16">
@@ -65,7 +65,7 @@ export default function DeliverySection() {
           {steps.map((step, i) => (
             <li key={step.title} className="flex">
               <Reveal delay={i * 0.08} className="flex w-full">
-                <article className="group relative flex w-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.07]">
+                <article className="group relative flex w-full flex-col rounded-2xl border border-white/10 bg-white/4 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.07]">
                   <div className="flex items-center justify-between">
                     <span
                       aria-hidden="true"

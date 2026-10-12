@@ -13,11 +13,11 @@ function ProjectVisual({ project }: { project: Project }) {
       <div
         role="img"
         aria-label={`${project.title} (${project.category})`}
-        className="relative flex aspect-[16/10] flex-col items-center justify-center overflow-hidden rounded-2xl bg-navy p-8 text-center text-white"
+        className="relative flex aspect-16/10 flex-col items-center justify-center overflow-hidden rounded-2xl bg-navy p-8 text-center text-white"
       >
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:22px_22px]"
+          className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[22px_22px]"
         />
         <div className="relative flex h-20 w-20 items-center justify-center rounded-3xl border border-white/15 bg-white/10 text-sky-400">
           <Icon size={38} aria-hidden="true" />
@@ -30,10 +30,10 @@ function ProjectVisual({ project }: { project: Project }) {
 
   if (project.image.device === "phone") {
     return (
-      <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-navy">
+      <div className="relative aspect-16/10 overflow-hidden rounded-2xl bg-navy">
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:22px_22px]"
+          className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[22px_22px]"
         />
         <div
           aria-hidden="true"
@@ -41,7 +41,7 @@ function ProjectVisual({ project }: { project: Project }) {
         />
         {/* Phone: taller than the panel, so the bottom is cropped like a product shot */}
         <div className="absolute left-1/2 top-[8%] w-[42%] max-w-[16rem] -translate-x-1/2 rounded-[1.9rem] border-[6px] border-slate-900 bg-slate-900 shadow-2xl ring-1 ring-white/20 transition-transform duration-500 group-hover:-translate-y-1.5">
-          <div className="overflow-hidden rounded-[1.5rem]">
+          <div className="overflow-hidden rounded-3xl">
             <img
               src={project.image.src}
               alt={project.image.alt}

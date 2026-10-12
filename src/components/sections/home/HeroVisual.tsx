@@ -6,8 +6,8 @@ const bars = [38, 62, 48, 80, 58, 92, 70];
 /** Abstract product illustration: a web app, a phone, and two floating badges. */
 export function HeroVisual() {
   return (
-    <div className="relative mx-auto w-full max-w-[38rem] pb-12 pt-10 pr-3" aria-hidden="true">
-      <div className="absolute inset-y-4 left-4 right-0 rounded-[2rem] bg-gradient-to-br from-primary/15 via-primary/5 to-transparent" />
+    <div className="relative mx-auto w-full max-w-152 pb-12 pt-10 pr-3" aria-hidden="true">
+      <div className="absolute inset-y-4 left-4 right-0 rounded-4xl bg-linear-to-br from-primary/15 via-primary/5 to-transparent" />
 
       {/* Browser window */}
       <div className="relative ml-6 w-[80%] overflow-hidden rounded-xl border border-border bg-card shadow-xl">
@@ -52,7 +52,7 @@ export function HeroVisual() {
       </div>
 
       {/* Phone */}
-      <div className="absolute -bottom-0 right-0 w-[34%] animate-float rounded-[1.75rem] border-[5px] border-navy bg-card ring-1 ring-white/10 p-2.5 shadow-2xl">
+      <div className="absolute bottom-0 right-0 w-[34%] animate-float rounded-[1.75rem] border-[5px] border-navy bg-card ring-1 ring-white/10 p-2.5 shadow-2xl">
         <div className="mx-auto mb-2 h-1.5 w-10 rounded-full bg-foreground/15" />
         <div className="flex items-center gap-2">
           <div className="h-7 w-7 rounded-full bg-primary/20 ring-1 ring-primary/30" />
@@ -76,7 +76,7 @@ export function HeroVisual() {
       </div>
 
       {/* Badge: live project */}
-      <div className="absolute -top-0 right-2 flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground shadow-lg">
+      <div className="absolute top-0 right-2 flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground shadow-lg">
         <span className="relative flex h-2 w-2">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
