@@ -29,30 +29,18 @@ function ProjectVisual({ project }: { project: Project }) {
   }
 
   if (project.image.device === "phone") {
+    // Phone screenshot on its own: no background box, just the image.
     return (
-      <div className="relative aspect-16/10 overflow-hidden rounded-2xl bg-navy">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[22px_22px]"
+      <div className="flex justify-center">
+        <img
+          src={project.image.src}
+          alt={project.image.alt}
+          width={project.image.width}
+          height={project.image.height}
+          loading="lazy"
+          decoding="async"
+          className="block h-auto max-h-[34rem] w-auto max-w-full rounded-[2rem] shadow-xl ring-1 ring-border"
         />
-        <div
-          aria-hidden="true"
-          className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-3xl"
-        />
-        {/* Phone: taller than the panel, so the bottom is cropped like a product shot */}
-        <div className="absolute left-1/2 top-[8%] w-[42%] max-w-[16rem] -translate-x-1/2 rounded-[1.9rem] border-[6px] border-slate-900 bg-slate-900 shadow-2xl ring-1 ring-white/20 transition-transform duration-500 group-hover:-translate-y-1.5">
-          <div className="overflow-hidden rounded-3xl">
-            <img
-              src={project.image.src}
-              alt={project.image.alt}
-              width={project.image.width}
-              height={project.image.height}
-              loading="lazy"
-              decoding="async"
-              className="block h-auto w-full"
-            />
-          </div>
-        </div>
       </div>
     );
   }

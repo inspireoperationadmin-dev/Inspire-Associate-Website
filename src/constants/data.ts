@@ -21,7 +21,7 @@ export const pillars: Pillar[] = [
       { title: "Web Development", desc: "Full-stack web applications and scalable enterprise solutions." },
       { title: "Mobile App Development", desc: "Native and cross-platform apps for iOS and Android." },
       { title: "Custom Software & APIs", desc: "Bespoke systems and secure REST / GraphQL architectures." },
-      { title: "Cloud & Infrastructure", desc: "Managed hosting and architecture on AWS, Azure, and Google Cloud." },
+      { title: "Cloud & Infrastructure", desc: "Managed hosting and architecture on AWS and Azure." },
     ],
   },
   {
@@ -40,12 +40,9 @@ export const pillars: Pillar[] = [
   {
     id: "operations",
     title: "Business Operations",
-    blurb: "Back-office support so your team can focus on growth.",
+    blurb: "Space, staff, and storage so your team can focus on growth.",
     icon: Briefcase,
     items: [
-      { title: "Accounting & Bookkeeping", desc: "Accurate financial record-keeping and accounts management." },
-      { title: "Back Office & Data Support", desc: "Data entry and administrative support to keep work flowing." },
-      { title: "E-commerce Operations", desc: "Online store management, from listings to order fulfilment." },
       { title: "Triple S Advantage", desc: "Space, Staff, and Storage solutions for scaling in Jaffna." },
     ],
   },
@@ -124,7 +121,7 @@ export const projects: Project[] = [
   {
     category: "POS System",
     icon: Store,
-    title: "Jas Kids",
+    title: "JAS KIDS POS",
     desc: "A multi-branch point-of-sale system for JAS Kids Indoor Playhouse, with branch reports, staff and access control, suppliers and accounts, items, services and packages, and expenses.",
     tags: ["Point of sale", "Multi-branch", "Role-based access"],
     status: "Delivered",
@@ -136,4 +133,54 @@ export const projects: Project[] = [
       alt: "JAS Kids POS super admin overview with branches and reports, staff and access, suppliers, items and expenses",
     },
   },
+];
+
+export type HeroSlide = {
+  /** Shown in the browser bar and the caption under the screenshot. */
+  title: string;
+  caption: string;
+  image: { src: string; width: number; height: number; alt: string };
+};
+
+/**
+ * Desktop UI mockups that flip automatically in the hero (up to 5 look best). They are sample
+ * designs, not client work. To swap one: replace the image in public/hero/ (1400x860 .webp).
+ */
+const hero = (file: string, title: string, caption: string, alt: string): HeroSlide => ({
+  title,
+  caption,
+  image: { src: `/hero/${file}.webp`, width: 1400, height: 860, alt },
+});
+
+export const heroSlides: HeroSlide[] = [
+  hero(
+    "dashboard",
+    "Business dashboard",
+    "Analytics, reports and admin systems",
+    "Business dashboard interface with sales figures, a revenue chart, a channel breakdown and a recent orders table"
+  ),
+  hero(
+    "online-store",
+    "Online store",
+    "E-commerce websites and storefronts",
+    "Online store interface with a promotional banner, product categories and a grid of products with prices and ratings"
+  ),
+  hero(
+    "project-board",
+    "Project board",
+    "Web apps and team tools",
+    "Project management board interface with sprint progress and task cards in to do, in progress, in review and done columns"
+  ),
+  hero(
+    "saas-landing",
+    "Product website",
+    "Marketing sites that convert",
+    "Software product landing page with a headline, call-to-action buttons, an app preview and feature cards"
+  ),
+  hero(
+    "design-editor",
+    "UI/UX design",
+    "Design systems and app prototypes",
+    "UI design editor showing mobile app screens, a desktop dashboard frame, reusable components and a properties panel"
+  ),
 ];

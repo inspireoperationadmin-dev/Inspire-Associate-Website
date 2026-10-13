@@ -86,7 +86,7 @@ export default function ContactSection() {
 
   const details = [
     { icon: Mail, label: "Email", value: "hr@inspire-associate.com", href: "mailto:hr@inspire-associate.com" },
-    { icon: WhatsAppIcon, label: "WhatsApp", value: "+94 77 309 1764", href: "https://wa.me/94773091764" },
+    { icon: WhatsAppIcon, label: "WhatsApp", value: "+94 76 314 3738", href: "https://wa.me/94763143738" },
     { icon: LinkedInIcon, label: "LinkedIn", value: "Inspire Associates", href: "https://www.linkedin.com/company/inspire-associates/" },
     { icon: MapPin, label: "Location", value: "Kopay, Jaffna, Sri Lanka" },
   ];

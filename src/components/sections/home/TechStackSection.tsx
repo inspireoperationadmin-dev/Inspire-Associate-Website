@@ -36,7 +36,7 @@ export default function TechStackSection() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               We use proven frameworks and best practices to build products that are fast, scalable, and
-              maintainable, plus the design and social tools we use to run your brand and content.
+              maintainable, plus the design and social tools we use to run your brand and content. If your project needs a stack that is not listed, we can arrange it.
             </p>
           </Reveal>
 
@@ -55,9 +55,9 @@ export default function TechStackSection() {
                           className="group inline-flex items-center gap-2.5 rounded-lg border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
                         >
                           {isTech ? (
-                            <TechLogo tech={TECH[item]} size={18} className="text-foreground/70" />
+                            <TechLogo tech={TECH[item]} size={18} />
                           ) : (
-                            <Workflow size={18} className="text-foreground/70" aria-hidden="true" />
+                            <Workflow size={18} className="text-brand" aria-hidden="true" />
                           )}
                           {name}
                         </li>
@@ -67,6 +67,12 @@ export default function TechStackSection() {
                 </div>
               </Reveal>
             ))}
+            <Reveal>
+              <p className="pt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                <span className="font-semibold text-foreground">Don&apos;t see your stack here?</span> We can arrange
+                and work with any stack your project needs, so you are never limited to this list.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>

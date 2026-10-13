@@ -23,15 +23,16 @@ export function TechSprite() {
 }
 
 /**
- * A technology logo. It is monochrome (inherits the text colour) so every logo stays readable on
- * light and dark backgrounds, and turns into its brand colour when an ancestor with the
- * `group` class is hovered. Pass `colored` to always show the brand colour.
+ * A technology logo, shown in its brand colour. Logos whose brand colour is black/white (Next.js,
+ * Expo, Express, GitHub) use the text colour so they stay readable on light and dark backgrounds.
+ * Pass `colored={false}` for a monochrome logo that only turns colourful when an ancestor with
+ * the `group` class is hovered.
  */
 export function TechLogo({
   tech,
   size = 20,
   className,
-  colored = false,
+  colored = true,
 }: {
   tech: Tech;
   size?: number;
@@ -50,7 +51,7 @@ export function TechLogo({
       aria-hidden="true"
       focusable="false"
       style={colored && brand ? { ...style, color: brand } : style}
-      className={`transition-colors duration-200 ${brand ? "group-hover:text-[var(--tech-color)]" : ""} ${className ?? ""}`}
+      className={`transition-colors duration-200 ${brand ? "group-hover:text-[var(--tech-color)]" : colored ? "text-foreground" : ""} ${className ?? ""}`}
     >
       <use href={`#tech-${tech.id}`} />
     </svg>

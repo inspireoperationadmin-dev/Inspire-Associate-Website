@@ -6,7 +6,7 @@ export function TechMarquee() {
   const group = (hidden: boolean) => (
     <ul className="flex shrink-0 items-center gap-10 pr-10" aria-hidden={hidden || undefined}>
       {marqueeTech.map((id) => (
-        <li key={id} className="group flex items-center gap-2.5 text-muted-foreground transition-colors hover:text-foreground">
+        <li key={id} className="group flex items-center gap-2.5 text-muted-foreground">
           <TechLogo tech={TECH[id]} size={26} />
           <span className="whitespace-nowrap text-sm font-medium">{TECH[id].name}</span>
         </li>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
-import { HeroVisual } from "@/components/sections/home/HeroVisual";
+import { HeroShowcase } from "@/components/sections/home/HeroShowcase";
 import { cn } from "@/lib/utils";
 
 const highlights = ["Web & mobile apps", "Brand, social & content", "Cloud & business support"];
@@ -43,7 +43,7 @@ export default function HeroSection() {
         <div className="absolute -left-24 -top-24 h-96 w-[24rem] rounded-full bg-primary/10 blur-3xl animate-blob" />
       </div>
 
-      <div className="container-x relative grid items-center gap-14 lg:grid-cols-[1fr_1fr] lg:gap-8">
+      <div className="container-x relative grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
         <div>
           <Reveal hero>
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm sm:text-sm">
@@ -104,7 +104,7 @@ export default function HeroSection() {
         </div>
 
         <Reveal hero delay={0.15}>
-          <HeroVisual />
+          <HeroShowcase />
         </Reveal>
       </div>
     </section>

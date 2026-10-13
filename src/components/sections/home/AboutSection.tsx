@@ -10,7 +10,7 @@ const pillars = [
   {
     icon: Megaphone,
     title: "Digital services",
-    desc: "Design, marketing, and back-office support delivered under one roof.",
+    desc: "Design, marketing, and business support delivered under one roof.",
   },
   {
     icon: Building2,
